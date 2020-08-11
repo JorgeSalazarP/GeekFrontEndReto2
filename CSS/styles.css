@@ -1,0 +1,42 @@
+
+#contenedor_principal{
+
+
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: 120px 1fr 70px;
+    height: 100vh;
+}
+
+
+header{
+
+    grid-column: 1/6;
+    background-color: blue;
+    color: white;
+}
+
+#contenido{
+    grid-column: 1/5;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 25px;
+    padding: 30px;
+    background-color: lawngreen;
+    
+}
+
+#contenido article{
+
+    border: black 1px solid;
+}
+
+aside{
+    grid-column: 5/6;
+    background-color: crimson;
+}
+
+footer{
+    grid-column: 1/6;
+    background-color:yellow;
+}
