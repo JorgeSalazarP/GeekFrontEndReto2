@@ -5,6 +5,7 @@
     const contenido = document.querySelector('#tarjetas');
     const soltar_productos = document.getElementById('carrito');
     var img_seleccionada="";
+    var articulo =" ";
 
     let frutas = [
         {   
@@ -46,9 +47,9 @@
     ];
 
     for (let valor of frutas) {
-
+        
         contenido.innerHTML += `
-        <article class="col-md-4" >
+        <article class="col-md-4" id="articulotarjeta${valor.id}" >
 
         <div class="card" style="width: 18rem;">
             <img src=${valor.imagen} id="tarjeta${valor.id}" class="card-img-top draggable="true">
@@ -66,16 +67,16 @@
         
         </article>
 		`;
-
-
+      
     }
  
     
     
     document.addEventListener('dragstart',(e)=>{
 
-        e.dataTransfer.setData('text/plain',e.target.id);
+       
         img_seleccionada = document.getElementById(e.target.id);
+        articulo = document.querySelector('#articulo'+ e.target.id);
         
     });
 
@@ -83,18 +84,14 @@
     soltar_productos.addEventListener('dragover',(e)=>{
 
         e.preventDefault();
-
-
-
     });
     
     soltar_productos.addEventListener('drop',(e)=>{
-        e.preventDefault();
-        console.log("drop");
-        console.log(img_seleccionada);
-      //  const elemento = document.getElementById(e.getElementById);
-         soltar_productos.appendChild(arrastrar_productos.removeChild(img_seleccionada));
-
+        e.preventDefault();        
+        soltar_productos.appendChild(img_seleccionada);
+        articulo.style.display="none";
+        
+         
     });
 
 

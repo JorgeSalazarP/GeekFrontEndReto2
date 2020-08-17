@@ -70,15 +70,14 @@ header{
 
 aside{
 
+    display: flex;
+    flex-direction: column;
     background-color: rgb(183, 231, 231);
 }
 
-.active{
 
-    background:#ffffff; 
+.ajustar_imagen img{
+
+    width: 100px;
 }
 
-.arrastrar_imagen{
-
-    background-color: yellow ;
-}
