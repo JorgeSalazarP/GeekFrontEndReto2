@@ -64,7 +64,9 @@ header{
 
 .btn{
 
-        color:#8f4229;
+        color:#212529;
+        background: #ffd2ff;
+        font-weight: bold;
 }
 
 

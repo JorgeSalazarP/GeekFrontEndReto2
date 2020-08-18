@@ -4,8 +4,14 @@
     
     const contenido = document.querySelector('#tarjetas');
     const soltar_productos = document.getElementById('carrito');
-    var img_seleccionada="";
-    var articulo =" ";
+    let img_seleccionada="";
+    let articulo ="";
+    let cantidad_0=100;
+    let cantidad_1=100;
+    let cantidad_2=100;
+    let cantidad_3=100;
+    let cantidad_4=100;
+    let cantidad_5=100;
 
     let frutas = [
         {   
@@ -49,7 +55,7 @@
     for (let valor of frutas) {
         
         contenido.innerHTML += `
-        <article class="col-md-4" id="articulotarjeta${valor.id}" >
+        <article class="col-md-4" id="articulo_tarjeta${valor.id}" >
 
         <div class="card" style="width: 18rem;">
             <img src=${valor.imagen} id="tarjeta${valor.id}" class="card-img-top draggable="true">
@@ -57,9 +63,9 @@
                 <span class="precio">${valor.price}€/Kg</span>
                 <p class="card-text">${valor.content}</p>
                 <div id="cantidad">
-                    <button class="btn restar_cantidad">-</button>
-                    <span>100</span>     
-                    <button class="btn sumar_cantidad">+</button>
+                    <button class="btn restar_cantidad_${valor.id}">-</button>
+                    <span id="mostrar_cantidad${valor.id}">100</span>     
+                    <button class="btn sumar_cantidad_${valor.id}">+</button>
                 </div>
                 <p>Arrastrar al carrito de compra</p>
             </div>
@@ -76,7 +82,7 @@
 
        
         img_seleccionada = document.getElementById(e.target.id);
-        articulo = document.querySelector('#articulo'+ e.target.id);
+        articulo = document.querySelector('#articulo_'+ e.target.id);
         
     });
 
@@ -90,11 +96,173 @@
         e.preventDefault();        
         soltar_productos.appendChild(img_seleccionada);
         articulo.style.display="none";
+       
         
          
     });
 
 
+
+    const boton_sumar_0=document.querySelector('.sumar_cantidad_0');
+    const boton_sumar_1=document.querySelector('.sumar_cantidad_1');
+    const boton_sumar_2=document.querySelector('.sumar_cantidad_2');
+    const boton_sumar_3=document.querySelector('.sumar_cantidad_3');
+    const boton_sumar_4=document.querySelector('.sumar_cantidad_4');
+    const boton_sumar_5=document.querySelector('.sumar_cantidad_5');
+
+    boton_sumar_0.addEventListener('click',()=>{
+
+    
+        cantidad_0+=50;
+        document.querySelector('#mostrar_cantidad0').innerHTML=cantidad_0;
+        
+    });
+
+    boton_sumar_1.addEventListener('click',()=>{
+
+        cantidad_1+=50;
+        document.querySelector('#mostrar_cantidad1').innerHTML=cantidad_1;
+        
+    });
+
+    boton_sumar_2.addEventListener('click',()=>{
+
+        cantidad_2+=50;
+        document.querySelector('#mostrar_cantidad2').innerHTML=cantidad_2;
+        
+    });
+
+    boton_sumar_3.addEventListener('click',()=>{
+
+        cantidad_3+=50;
+        document.querySelector('#mostrar_cantidad3').innerHTML=cantidad_3;
+        
+    });
+
+
+    boton_sumar_4.addEventListener('click',()=>{
+
+        cantidad_4+=50;
+        document.querySelector('#mostrar_cantidad4').innerHTML=cantidad_4;
+        
+    });
+    boton_sumar_5.addEventListener('click',()=>{
+
+        cantidad_5+=50;
+        document.querySelector('#mostrar_cantidad5').innerHTML=cantidad_5;
+        
+    });
+
+    const boton_restar_0=document.querySelector('.restar_cantidad_0');
+    const boton_restar_1=document.querySelector('.restar_cantidad_1');
+    const boton_restar_2=document.querySelector('.restar_cantidad_2');
+    const boton_restar_3=document.querySelector('.restar_cantidad_3');
+    const boton_restar_4=document.querySelector('.restar_cantidad_4');
+    const boton_restar_5=document.querySelector('.restar_cantidad_5');
+
+    boton_restar_0.addEventListener('click',()=>{
+
+        if (cantidad_0===100) {
+
+            cantidad_0=100;
+            
+        }
+        else{
+            cantidad_0-=50;
+            document.querySelector('#mostrar_cantidad0').innerHTML=cantidad_0;
+        }
+        
+        
+
+    });
+    
+    boton_restar_1.addEventListener('click',()=>{
+
+        if (cantidad_1===100) {
+
+            cantidad_1=100;
+            
+        }
+        else{
+            cantidad_1-=50;
+            document.querySelector('#mostrar_cantidad1').innerHTML=cantidad_1;
+        
+        }
+        
+        
+
+    });
+
+    boton_restar_2.addEventListener('click',()=>{
+
+        
+        if (cantidad_2===100) {
+
+            cantidad_2=100;
+            
+        }
+        else{
+            cantidad_2-=50;
+            document.querySelector('#mostrar_cantidad2').innerHTML=cantidad_2;
+        
+        }
+        
+        
+
+    });
+    boton_restar_3.addEventListener('click',()=>{
+
+
+        if (cantidad_3===100) {
+
+            cantidad_3=100;
+            
+        }
+        else{
+            cantidad_3-=50;
+            document.querySelector('#mostrar_cantidad3').innerHTML=cantidad_3;
+        
+        }
+        
+
+
+    });
+
+    boton_restar_4.addEventListener('click',()=>{
+
+        if (cantidad_4===100) {
+
+            cantidad_4=100;
+            
+        }
+        else{
+            cantidad_4-=50;
+            document.querySelector('#mostrar_cantidad4').innerHTML=cantidad_4;
+        
+        }
+        
+
+       
+        
+
+    });
+
+    boton_restar_5.addEventListener('click',()=>{
+
+        if (cantidad_5===100) {
+
+            cantidad_5=100;
+            
+        }
+        else{
+            cantidad_5-=50;
+            document.querySelector('#mostrar_cantidad5').innerHTML=cantidad_5;
+        
+        }
+        
+        
+
+    });
 
     /*fetch('js/frutas.json')
         .then(data=>data.json())
