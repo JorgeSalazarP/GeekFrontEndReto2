@@ -4,7 +4,10 @@ body{
    overflow-x: hidden;
    
 }
+.fa{
 
+    font-size: 50px;
+}
 header{
     color: #ff7000;
 
@@ -75,12 +78,6 @@ header{
 aside{
 
     margin-left: 20px;
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-items:top;
-    justify-content: start;
     background-color: rgb(183, 231, 231);
     
   
