@@ -38,8 +38,10 @@ header{
     flex-direction: row;
     flex-wrap: wrap;
     padding: 0px;
+ 
    
 }
+
 
 
 .card{
@@ -53,7 +55,7 @@ header{
     margin: 0px auto;
 }
 
-#cantidad{
+.cantidad{
 
     display: flex;
     flex-direction: row;
@@ -72,14 +74,23 @@ header{
 
 aside{
 
+    margin-left: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items:top;
+    justify-content: start;
     background-color: rgb(183, 231, 231);
+    
+  
 }
 
 
 .ajustar_imagen img{
 
     width: 100px;
+    height: 100px;
+    
 }
 

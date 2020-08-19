@@ -13,45 +13,47 @@
     let cantidad_4=100;
     let cantidad_5=100;
 
+   
     let frutas = [
         {   
-            id: "0",
+            id: 0,
             content: 'Kiwi verde al peso (peso aproximado de la unidad 130g).',
             price: 3.89,
             imagen:'img/KIWIS.png'
         },
         {
-            id: "1",
+            id: 1,
             content: 'Melocotón selección al peso (peso aproximado de la unidad 150g).',
             price: 3.95,
             imagen:'img/melocotones.png'
         },
         {
-            id: "2",
+            id: 2,
             content: 'Melón piel de sapo pieza 3,5kg peso aproximado.',
             price: 3.47,
             imagen:'img/melon.png'
         },
         {
-            id: "3",
+            id: 3,
             content: 'Manzana golden al peso (peso aproximado de la unidad 200g).',
             price: 1.75,
             imagen:'img/manzanas.png'
         },
         {
-            id: "4",
+            id: 4,
             content: 'Paraguayo al peso (peso aproximado de la unidad 130g)',
             price: 1.69,
             imagen:'img/paraguayos.png'
         },
         {
-            id: "5",
+            id: 5,
             content: 'Sandía cuarto pieza 1,5 kg peso aproximado',
             price:0.99,
             imagen:'img/sandia.png'
         },
     ];
 
+   
     for (let valor of frutas) {
         
         contenido.innerHTML += `
@@ -62,10 +64,10 @@
             <div class="card-body">
                 <span class="precio">${valor.price}€/Kg</span>
                 <p class="card-text">${valor.content}</p>
-                <div id="cantidad">
-                    <button class="btn restar_cantidad_${valor.id}">-</button>
+                <div class="cantidad">
+                    <button class="btn" id="restar_cantidad_${valor.id}">-</button>
                     <span id="mostrar_cantidad${valor.id}">100</span>     
-                    <button class="btn sumar_cantidad_${valor.id}">+</button>
+                    <button class="btn" id="sumar_cantidad_${valor.id}">+</button>
                 </div>
                 <p>Arrastrar al carrito de compra</p>
             </div>
@@ -75,17 +77,39 @@
 		`;
       
     }
+    
  
-    
-    
     document.addEventListener('dragstart',(e)=>{
 
        
         img_seleccionada = document.getElementById(e.target.id);
         articulo = document.querySelector('#articulo_'+ e.target.id);
+      
+        
         
     });
 
+
+    document.addEventListener('click',(e)=>{
+
+        let elemento_pulsado = e.target.id;
+        let nombre_idboton = "sumar_cantidad_";
+        let pulsado_boton_sumar = elemento_pulsado.indexOf(nombre_idboton);
+
+        if (pulsado_boton_sumar !== -1){
+            console.log("La palabra está en la posición ");
+            let ultima=elemento_pulsado[elemento_pulsado.length-1];
+
+
+
+
+        }
+        
+        
+    
+
+
+    });
     
     soltar_productos.addEventListener('dragover',(e)=>{
 
@@ -95,13 +119,22 @@
     soltar_productos.addEventListener('drop',(e)=>{
         e.preventDefault();        
         soltar_productos.appendChild(img_seleccionada);
-        articulo.style.display="none";
-       
+        const cantidad = document.querySelector('#carrito article');
+
+        cantidad.innerHTML=`3.95€/kg x 100 = 395€`;
         
+
+        //console.log(cantidad); 
+        //3.95€/kg x 100 = 395€
+        articulo.style.display="none";
+
+      
          
     });
 
 
+    
+/*
 
     const boton_sumar_0=document.querySelector('.sumar_cantidad_0');
     const boton_sumar_1=document.querySelector('.sumar_cantidad_1');
@@ -111,8 +144,7 @@
     const boton_sumar_5=document.querySelector('.sumar_cantidad_5');
 
     boton_sumar_0.addEventListener('click',()=>{
-
-    
+        
         cantidad_0+=50;
         document.querySelector('#mostrar_cantidad0').innerHTML=cantidad_0;
         
@@ -239,10 +271,7 @@
             cantidad_4-=50;
             document.querySelector('#mostrar_cantidad4').innerHTML=cantidad_4;
         
-        }
-        
-
-       
+        }       
         
 
     });
@@ -263,7 +292,7 @@
         
 
     });
-
+*/
     /*fetch('js/frutas.json')
         .then(data=>data.json())
         .then(datos =>{
