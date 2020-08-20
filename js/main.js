@@ -58,7 +58,7 @@
         <article class="col-md-4 articulo_tarjeta${valor.id}" >
 
         <div class="card" style="width: 18rem;">
-            <img src=${valor.image} id="tarjeta${valor.id}" class="card-img-top draggable="true">
+            <img src=${valor.image} id="tarjeta${valor.id}" class="card-img-top" draggable="true">
             <div class="card-body">
                 <span id="precio_tarjeta${valor.id}">${valor.price}</span><span>€/Kg</span>
                 <p class="card-text">${valor.content}</p>
@@ -84,6 +84,9 @@
         cantidad_articulo= document.querySelector('#mostrar_cantidad_'+e.target.id);
         precio_articulo= document.querySelector('#precio_'+e.target.id);
         elemento_seleccionado=e.target.id;
+
+      
+       
     });
 
 
@@ -124,8 +127,12 @@
     });
     
     soltar_productos.addEventListener('drop',(e)=>{
-        e.preventDefault();        
+        e.preventDefault();     
+        
+      
+        img_seleccionada.setAttribute("draggable","false");
         soltar_productos.appendChild(img_seleccionada);
+        
         soltar_productos.appendChild(cantidad_articulo);
         let simbolo_multiplicar = document.createElement("span");
         simbolo_multiplicar.innerHTML=" X ";
@@ -142,28 +149,30 @@
         soltar_productos.appendChild(total);
         total_compra+=operacion;
         let icono_papelera = document.createElement("span");
-        icono_papelera.innerHTML = `<button class="btn"><i id="papelera_${elemento_seleccionado}"class="fa fa-trash"></i></button>`;
+        icono_papelera.innerHTML = `<i id="papelera_${elemento_seleccionado}"class="fa fa-trash"></i>`;
         soltar_productos.appendChild(icono_papelera);
-       
+      
         contenido.removeChild(articulo);
-        
-        
+
+
+
 
         icono_papelera.addEventListener('click',(e)=>{
 
-          
-            let ultima=e.target.id[e.target.id.length-1];
+            const elemento_pulsado = e.target.id;
+            console.log(e.target.id);
+            let ultima=elemento_pulsado[elemento_pulsado.length-1];
             console.log(ultima);
             let devolver_producto= document.createElement("article");
             devolver_producto.classList.add("col-md-4");
             devolver_producto.classList.add("articulo_tarjeta${frutas[ultima].id}");
-            contenido.appendChild(devolver_producto);
-            
 
+            contenido.appendChild(devolver_producto);
+        
             devolver_producto.innerHTML = `
             
             <div class="card" style="width: 18rem;">
-                <img src="${frutas[ultima].image}" id="tarjeta${frutas[ultima].id}" class="card-img-top draggable="true">
+                <img src="${frutas[ultima].image}" id="tarjeta${frutas[ultima].id}" class="card-img-top" draggable="true">
                 <div class="card-body">
                     <span id="precio_tarjeta${frutas[ultima].id}">${frutas[ultima].price}</span><span>€/Kg</span>
                     <p class="card-text">${frutas[ultima].content}</p>
@@ -177,7 +186,27 @@
             </div>
             
             `;
+           
             contenido.appendChild(devolver_producto);
+
+
+            soltar_productos.removeChild(img_seleccionada);
+            soltar_productos.removeChild(cantidad_articulo);
+        
+            soltar_productos.removeChild(simbolo_multiplicar);
+            soltar_productos.removeChild(precio_articulo);
+        
+            soltar_productos.removeChild(simbolo_igual);
+            soltar_productos.removeChild(icono_papelera);
+
+    
+            soltar_productos.removeChild(total);
+        
+            soltar_productos.removeChild(icono_papelera);
+            
+
+            
+
         });
 
         
