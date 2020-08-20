@@ -9,6 +9,7 @@
     let cantidad_articulo="";
     let precio_articulo="";
     let total_compra=0;
+    let elemento_seleccionado="";
 
     let frutas = [
         {   
@@ -50,10 +51,11 @@
     ];
 
     
+    
     for (let valor of frutas) {
         
         contenido.innerHTML += `
-        <article class="col-md-4" id="articulo_tarjeta${valor.id}" >
+        <article class="col-md-4 articulo_tarjeta${valor.id}" >
 
         <div class="card" style="width: 18rem;">
             <img src=${valor.image} id="tarjeta${valor.id}" class="card-img-top draggable="true">
@@ -78,10 +80,10 @@
     document.addEventListener('dragstart',(e)=>{
 
         img_seleccionada = document.getElementById(e.target.id);
-        articulo = document.querySelector('#articulo_'+ e.target.id);
+        articulo = document.querySelector('.articulo_'+ e.target.id);
         cantidad_articulo= document.querySelector('#mostrar_cantidad_'+e.target.id);
         precio_articulo= document.querySelector('#precio_'+e.target.id);
-        
+        elemento_seleccionado=e.target.id;
     });
 
 
@@ -139,58 +141,52 @@
         total.innerHTML=operacion+'€';
         soltar_productos.appendChild(total);
         total_compra+=operacion;
-        console.log(total_compra);
-        //soltar_productos.innerHTML=`<i class="fa fa-trash"></i>`;
+        let icono_papelera = document.createElement("span");
+        icono_papelera.innerHTML = `<button class="btn"><i id="papelera_${elemento_seleccionado}"class="fa fa-trash"></i></button>`;
+        soltar_productos.appendChild(icono_papelera);
+       
+        contenido.removeChild(articulo);
+        
         
 
+        icono_papelera.addEventListener('click',(e)=>{
 
+          
+            let ultima=e.target.id[e.target.id.length-1];
+            console.log(ultima);
+            let devolver_producto= document.createElement("article");
+            devolver_producto.classList.add("col-md-4");
+            devolver_producto.classList.add("articulo_tarjeta${frutas[ultima].id}");
+            contenido.appendChild(devolver_producto);
+            
 
+            devolver_producto.innerHTML = `
+            
+            <div class="card" style="width: 18rem;">
+                <img src="${frutas[ultima].image}" id="tarjeta${frutas[ultima].id}" class="card-img-top draggable="true">
+                <div class="card-body">
+                    <span id="precio_tarjeta${frutas[ultima].id}">${frutas[ultima].price}</span><span>€/Kg</span>
+                    <p class="card-text">${frutas[ultima].content}</p>
+                    <div class="cantidad">
+                        <button class="btn" id="restar_cantidad_${frutas[ultima].id}">-</button>
+                        <span id="mostrar_cantidad_tarjeta${frutas[ultima].id}">100</span><span>g</span>
+                        <button class="btn" id="sumar_cantidad_${frutas[ultima].id}">+</button>
+                    </div>
+                    <p>Arrastrar la imagen al carrito de compra</p>
+                </div>
+            </div>
+            
+            `;
+            contenido.appendChild(devolver_producto);
+        });
 
-
-
-        articulo.style.display="none";
+        
         
     });
 
 
     
 
-    /*fetch('js/frutas.json')
-        .then(data=>data.json())
-        .then(datos =>{
-            
-            datos_tarjetas(datos);
-
-        })
-
-    
-    function datos_tarjetas(datos){
-
-        for (let valor of datos) {
-
-            contenido.innerHTML += `
-            <article class="col-md-4" >
-    
-            <div class="card" style="width: 18rem;" draggable="true">
-                <img src=${valor.imagen} class="card-img-top">
-                <div class="card-body">
-                    <span class="precio">${valor.price}€/Kg</span>
-                    <p class="card-text">${valor.content}</p>
-                    <div id="cantidad">
-                        <button class="btn restar_cantidad">-</button>
-                        <span>100</span>     
-                        <button class="btn sumar_cantidad">+</button>
-                    </div>
-                    <p>Arrastrar al carrito de compra</p>
-                </div>
-            </div>
-            
-            </article>
-            `;
-    
-    
-        }
-    }*/
     
 
 
