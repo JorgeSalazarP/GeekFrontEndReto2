@@ -91,7 +91,7 @@
 
 
     document.addEventListener('click',(e)=>{
-
+       
         const elemento_pulsado = e.target.id;
         const nombre_idboton = "sumar_cantidad_";
         const pulsado_boton_sumar = elemento_pulsado.indexOf(nombre_idboton);
@@ -129,50 +129,54 @@
     soltar_productos.addEventListener('drop',(e)=>{
         e.preventDefault();     
         
-      
-        img_seleccionada.setAttribute("draggable","false");
-        soltar_productos.appendChild(img_seleccionada);
+        let ultima=elemento_seleccionado[elemento_seleccionado.length-1];
+        console.log(ultima);
+        let crear_articulo_seleccionado = document.createElement("article");
+        crear_articulo_seleccionado.classList.add("articulo_tarjeta"+ultima);
+        soltar_productos.appendChild(crear_articulo_seleccionado);
         
-        soltar_productos.appendChild(cantidad_articulo);
+        
+        
+        img_seleccionada.setAttribute("draggable","false");
+        crear_articulo_seleccionado.appendChild(img_seleccionada);
+        
+        crear_articulo_seleccionado.appendChild(cantidad_articulo);
         let simbolo_multiplicar = document.createElement("span");
         simbolo_multiplicar.innerHTML=" X ";
-        soltar_productos.appendChild(simbolo_multiplicar);
-        soltar_productos.appendChild(precio_articulo);
+        crear_articulo_seleccionado.appendChild(simbolo_multiplicar);
+        crear_articulo_seleccionado.appendChild(precio_articulo);
         let simbolo_igual = document.createElement("span");
         simbolo_igual.innerHTML=" = ";
-        soltar_productos.appendChild(simbolo_igual);
+        crear_articulo_seleccionado.appendChild(simbolo_igual);
 
         let total = document.createElement("span");
         let operacion=(parseFloat((cantidad_articulo.textContent)/1000)*parseFloat(precio_articulo.textContent)).toFixed(2);
         
         total.innerHTML=operacion+'€';
-        soltar_productos.appendChild(total);
+        crear_articulo_seleccionado.appendChild(total);
         total_compra+=operacion;
         let icono_papelera = document.createElement("span");
         icono_papelera.innerHTML = `<i id="papelera_${elemento_seleccionado}"class="fa fa-trash"></i>`;
-        soltar_productos.appendChild(icono_papelera);
-      
+        crear_articulo_seleccionado.appendChild(icono_papelera);
         contenido.removeChild(articulo);
-
-
-
 
         icono_papelera.addEventListener('click',(e)=>{
 
             const elemento_pulsado = e.target.id;
-            console.log(e.target.id);
+            console.log(elemento_pulsado);
+      
             let ultima=elemento_pulsado[elemento_pulsado.length-1];
             console.log(ultima);
             let devolver_producto= document.createElement("article");
             devolver_producto.classList.add("col-md-4");
-            devolver_producto.classList.add("articulo_tarjeta${frutas[ultima].id}");
+            devolver_producto.classList.add("articulo_tarjeta"+frutas[ultima].id);
 
             contenido.appendChild(devolver_producto);
         
             devolver_producto.innerHTML = `
             
             <div class="card" style="width: 18rem;">
-                <img src="${frutas[ultima].image}" id="tarjeta${frutas[ultima].id}" class="card-img-top" draggable="true">
+                <img src=${frutas[ultima].image} id="tarjeta${frutas[ultima].id}" class="card-img-top" draggable="true">
                 <div class="card-body">
                     <span id="precio_tarjeta${frutas[ultima].id}">${frutas[ultima].price}</span><span>€/Kg</span>
                     <p class="card-text">${frutas[ultima].content}</p>
@@ -188,24 +192,10 @@
             `;
            
             contenido.appendChild(devolver_producto);
+            soltar_productos.removeChild(crear_articulo_seleccionado);
 
 
-            soltar_productos.removeChild(img_seleccionada);
-            soltar_productos.removeChild(cantidad_articulo);
-        
-            soltar_productos.removeChild(simbolo_multiplicar);
-            soltar_productos.removeChild(precio_articulo);
-        
-            soltar_productos.removeChild(simbolo_igual);
-            soltar_productos.removeChild(icono_papelera);
 
-    
-            soltar_productos.removeChild(total);
-        
-            soltar_productos.removeChild(icono_papelera);
-            
-
-            
 
         });
 
