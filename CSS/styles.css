@@ -40,21 +40,26 @@ header{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0px;
+   
  
    
 }
 
 
+#tarjetas article{
+
+   
+}
 
 .card{
     
     background:rgb(255, 210, 255);
     margin-bottom: 10px;
+   
 }
 .card img{
 
-    width: 180px;
+    width: 100px;
     margin: 0px auto;
 }
 
@@ -69,29 +74,65 @@ header{
 
 .btn{
 
-        color:#212529;
-        background: #ffd2ff;
-        font-weight: bold;
+    color:#212529;
+    background: #ffd2ff;
+    font-weight: bold;
 }
 
 
 aside{
 
-    margin-left: 20px;
+   
     background-color: rgb(183, 231, 231);
     
   
 }
 
 
+.card-body{
+
+    font-size: 15px;
+}
+
+.card-body span{
+
+    font-weight: bold;
+}
+
 .ajustar_imagen img{
 
-    width: 100px;
-    height: 100px;
+    width: 40px;
+    height: 40px;
     
 }
 
-.fa{
+.papelera{
 
     cursor: pointer;
+    margin-left: 3px;
+    font-size:20px;
+}
+
+#total_pedido{
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: yellow;
+    font-size: 25px;
+    margin-left: 30px;
+    max-height: 200px;
+    
+}
+
+#carrito{
+
+    margin-left: 20px;
+}
+
+
+#importe_pedido{
+
+    margin-bottom: 35px;
 }
