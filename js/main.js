@@ -5,6 +5,7 @@
     const contenido = document.querySelector('#tarjetas');
     const soltar_productos = document.getElementById('carrito');
     const pedido = document.getElementById('total_pedido');
+    const footer = document.getElementById('footer');
     
     let img_seleccionada="";
     let articulo ="";
@@ -23,7 +24,7 @@
         },
         {
             id: 1,
-            content: 'Melocotón selección al peso.',
+            content: 'Melocotón al peso.',
             price: 3.95,
             image:'img/melocotones.png'
         },
@@ -82,11 +83,51 @@
       
     }
 
-    soltar_productos.innerHTML=`<i class="fa fa-shopping-cart m-3"></i><span>Carrito</span>`;
-    pedido.innerHTML=`<p class="m-3">Total pedido</p><span id="importe_pedido">0€</span><button class="btn btn-primary btn-lg btn-block">Tramitar pedido</button>`;
+    soltar_productos.innerHTML=`<i class="fa fa-shopping-cart m-3"></i><span id="titulo_carrito">Mi carrito</span>`;
+    pedido.innerHTML=`<p class="m-3">Total pedido:</p><span id="importe_pedido">0€</span><button class="btn">Tramitar pedido</button>`;
     
     
- 
+    footer.innerHTML=`
+    <div class="row">
+              <div class="col">
+
+                <img src="img/logo.png" class="logo_footer">
+                <h6><strong>Frutería Rosmarí</strong></h6>
+                <ul class="list-inline">
+                  <li class="list-inline-item footer-menu"><a href="index.html">Inicio</a></li>
+                  <li class="list-inline-item footer-menu"><a href="#">Sobre mí</a></li>
+                  <li class="list-inline-item footer-menu"><a href="#">Contacto</a></li>
+                  <li class="list-inline-item footer-menu"><a href="#">Área de clientes</a></li>
+                </ul>
+                <ul class="list-inline">
+                  <li class="list-inline-item"><a href="#">
+                      <ion-icon name="logo-instagram"></ion-icon>
+                    </a></li>
+                  <li class="list-inline-item"><a href="#">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a></li>
+                  <li class="list-inline-item"><a href="#">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a></li>
+                  <li class="list-inline-item"><a href="#">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a></li>
+                  <li class="list-inline-item"><a href="#">
+                      <ion-icon name="logo-youtube"></ion-icon>
+                    </a></li>
+                </ul>
+      
+      
+                <small>&copy2020 All Rights Reserved. Created by Jorge Salazar Web</small>
+              </div>
+      
+    </div>
+            `;
+
+
+
+    
+
     document.addEventListener('dragstart',(e)=>{
 
         img_seleccionada = document.getElementById(e.target.id);
@@ -209,7 +250,7 @@
                         <span id="mostrar_cantidad_tarjeta${frutas[ultima].id}">100</span><span>g</span>
                         <button class="btn" id="sumar_cantidad_${frutas[ultima].id}">+</button>
                     </div>
-                    <p>Arrastrar la imagen al carrito</p>
+                    <p>Arrastrar imagen al carrito</p>
                 </div>
             </div>
             

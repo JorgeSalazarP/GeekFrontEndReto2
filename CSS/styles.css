@@ -1,17 +1,43 @@
 body{
 
-   background: #f8f9fa;
+   
    overflow-x: hidden;
+   background:url("../img/mostrador.png");
+   background-repeat: no-repeat ;
+   background-attachment: fixed;
+   background-size:100% 100% ;
+    
+  
+    
    
 }
 .fa{
 
     font-size: 50px;
+  
 }
-header{
-    color: #ff7000;
 
+.navbar-nav{
+
+
+    box-shadow: 0px 0px 10px #ccc;
+    background: #f8f4df;
+    background-clip: border-box;
+    border-radius: .25rem;
+    opacity: 0.9;
 }
+.nav-item{
+
+    padding: 7px;
+}
+.nav-link{
+
+    font-weight: bold;
+    font-size: 20px;
+    color:#d762e2!important;
+  
+}
+ 
 
 #logo{
 
@@ -22,10 +48,17 @@ header{
 }
 #logo img{
 
-    width: 80px;
+    width: 120px;
     
 }
 
+h1{
+
+    font-size:40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+}
 .usuario{
     
     width: 100%;
@@ -40,27 +73,41 @@ header{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-   
- 
-   
+    text-align: center;
+    
 }
 
-
-#tarjetas article{
-
-   
-}
 
 .card{
     
-    background:rgb(255, 210, 255);
-    margin-bottom: 10px;
-   
+    
+    background:url(../img/caja.png) ;
+    color: rgb(10, 5, 10);
+    background-size: cover;
+    margin-bottom: 10px; 
+    
 }
 .card img{
 
     width: 100px;
     margin: 0px auto;
+    padding-top: 38px;
+    margin-bottom: -26px;
+}
+
+
+.card-body{
+
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.card-body span,
+.card-body p,
+.card-text{
+
+    font-weight: bold;
+    background-color: #dcaa6d;
 }
 
 .cantidad{
@@ -75,29 +122,14 @@ header{
 .btn{
 
     color:#212529;
-    background: #ffd2ff;
+    background: #dcaa6d;
+    border:1px solid #212529;
     font-weight: bold;
 }
 
 
-aside{
-
-   
-    background-color: rgb(183, 231, 231);
-    
-  
-}
 
 
-.card-body{
-
-    font-size: 15px;
-}
-
-.card-body span{
-
-    font-weight: bold;
-}
 
 .ajustar_imagen img{
 
@@ -109,30 +141,122 @@ aside{
 .papelera{
 
     cursor: pointer;
-    margin-left: 3px;
+    margin-left: 2px;
     font-size:20px;
 }
 
 #total_pedido{
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    background-color: yellow;
-    font-size: 25px;
-    margin-left: 30px;
-    max-height: 200px;
+    justify-content: center;
+    
+    max-height: 170px;
+    margin-left: 31px;
     
 }
 
-#carrito{
 
-    margin-left: 20px;
+#total_pedido{
+
+    font-family: sans-serif, Arial, Helvetica;
+    font-size: 18px;
+    font-weight: bold;
+    border:1px solid rgba(225,225,226,0.8);
+    box-shadow: 0px 0px 10px #ccc;
+    background: #f8f4df;
+    background-clip: border-box;
+    border-radius: .25rem;
+    color:#d762e2;
+    opacity: 0.9;
+}
+#total_pedido .btn{
+
+    background-color:#d762e2 ;
+    color: #e8e3ce; 
+    border:none;
 }
 
 
 #importe_pedido{
 
-    margin-bottom: 35px;
+    color: #b31f42;
+  
+    
 }
+#carrito{
+  
+    margin-left: 50px;
+    color:#f8f4df;
+    background-color:#d762e2 ;
+    border:1px solid rgba(225,225,226,0.8);
+    box-shadow: 0px 0px 10px #ccc;
+    background-clip: border-box;
+    border-radius: .25rem;
+    opacity: 0.9;
+    text-align: start;
+  
+}
+
+#titulo_carrito{
+
+
+    font-size: 20px;
+}
+
+footer{
+    
+    height: auto;
+    margin: 0px auto;
+    padding: 20px;
+    
+    text-align: center;
+    box-shadow: 0px 0px 10px #ccc;
+    background: #f8f4df;
+    background-clip: border-box;
+    border-radius: .25rem;
+    opacity: 0.9;
+    
+}
+
+
+
+
+.footer-menu a{
+
+    text-decoration: none;
+    font-size: 15px;
+}
+
+
+.logo_footer{
+    
+    width: 9%;
+}
+
+.list-inline .list-inline-item{
+
+    padding: 5px;
+    margin-top: 0px;
+    
+
+}
+
+
+footer h6{
+    color: #120e0b;
+}
+.list-inline-item a
+{
+
+    color:#d762e2;
+    font-size: 20px;
+}
+
+small{
+
+    color:#d762e2;
+}
+
