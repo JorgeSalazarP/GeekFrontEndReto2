@@ -188,7 +188,7 @@ h1{
 }
 #carrito{
   
-    margin-left: 50px;
+    margin-left: 53px;
     color:#f8f4df;
     background-color:#d762e2 ;
     border:1px solid rgba(225,225,226,0.8);
@@ -258,31 +258,15 @@ h1{
  }
 
 
-.testimonios_usuarios{
 
-    max-width: 240px;
-    margin: 0px auto;
-    text-align: left;
-    
-}
+ .testimonios_usuarios {
 
-
-
-.testimonios_usuarios h6{
-
-    margin-bottom: 0px;
-}
-
-
-
-.testimonios_usuarios span{
-
-   font-size: 12px;
-}
-
-
-.carousel{
-
+    display:flex ;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
     border:1px solid rgba(225,225,226,0.8);
     box-shadow: 0px 0px 10px #ccc;
     background: #f8f4df;
@@ -290,21 +274,23 @@ h1{
     border-radius: .25rem;
     color:#d762e2;
     opacity: 0.9;
+    padding: 10px;
 }
 
-.carousel-item p{
 
-    font-size: 20px;
-    font-weight: bold;
-    font-family: sans-serif;
-}
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon{
 
+.testimonios_usuarios span{
+
+   font-size: 15px;
+   font-weight: bold;
   
-    background-color: #d762e2;
+}
 
+.nombre,
+.apellido,
+.foto{
+    margin-left: 10px;
 }
 
 footer{
