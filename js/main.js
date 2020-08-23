@@ -48,7 +48,7 @@
         },
         {
             id: 5,
-            content: 'Sandía cuarto pieza al peso.',
+            content: 'Sandía pieza al peso.',
             price:0.99,
             image:'img/sandia.png'
         },
@@ -56,8 +56,6 @@
 
         
     ];
-
-    
     
     for (let valor of frutas) {
         
