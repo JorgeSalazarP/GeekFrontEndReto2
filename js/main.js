@@ -89,7 +89,7 @@
    
 
 
-let testimonios_API=document.querySelector(".testimonios_usuarios");
+let equipo_API=document.querySelector(".equipo_usuarios");
 
 fetch('https://reqres.in/api/users/')
     .then(data=>data.json())
@@ -102,12 +102,7 @@ fetch('https://reqres.in/api/users/')
         
         usuarios.map((user,i)=>{
 
-
-
-            
-
-
-            testimonios_API.innerHTML+=`<img class="foto" src=${user.avatar} alt="testimonio1"> 
+            equipo_API.innerHTML+=`<img class="foto" src=${user.avatar} alt="testimonio1"> 
             <span class="nombre">${user.first_name} <span="apellido">${user.last_name}</span></span>`
 
         });

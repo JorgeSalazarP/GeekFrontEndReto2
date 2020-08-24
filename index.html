@@ -49,7 +49,7 @@
                             <a class="nav-link" href="#">Contacto <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Área de clientes</a>
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_usuario">Área de clientes</a>
                         </li>
 
 
@@ -57,11 +57,49 @@
 
                 </div>
             </nav>
-            <div>
+        <div>
+
+        <section id="usuario_identificado">
+
+            <div class="row">
+                
+                <div class="col-md-12">
+
+
+
+                </div>
+                  
+        
+            </div>
+        
+        </section>
 
     </header>
 
-    <section class="contenedor-main row">
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modal_usuario" tabindex="-1" aria-labelledby="modal_usuario" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+           <i class="fa fa-user"></i><h5 class="modal-title" id="modal_usuario">Introduce email y contraseña</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <section class="contenedor-main row mt-5">
 
         <main id="tarjetas" class="col-md-7">
 
@@ -81,19 +119,21 @@
         </div>
     </section>
 
-    <section id="testimonios">
+    <section id="equipo">
 
         <div class="container mt-5">
 
-            
-            <div class="testimonios_usuarios">
-
+            <h2>Nuestro equipo</h2>
+            <div class="equipo_usuarios">
+               
             </div>
 
         </div>
 
-        
     </section>
+    
+
+
 
     <footer class="mt-5">
 
@@ -106,7 +146,7 @@
                 <li class="list-inline-item footer-menu"><a href="index.html">Inicio</a></li>
                 <li class="list-inline-item footer-menu"><a href="#">Sobre mí</a></li>
                 <li class="list-inline-item footer-menu"><a href="#">Contacto</a></li>
-                <li class="list-inline-item footer-menu"><a href="#">Área de clientes</a></li>
+                <li class="list-inline-item footer-menu"><a href="#" data-toggle="modal" data-target="#modal_usuario">Área de clientes</a></li>
               </ul>
               <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">
