@@ -65,7 +65,7 @@
         <div class="card" style="width: 15rem;">
             <img src=${valor.image} id="tarjeta${valor.id}" class="card-img-top" draggable="true">
             <div class="card-body">
-                <span id="precio_tarjeta${valor.id}">${valor.price}</span><span>€/Kg</span>
+                <span id="precio_tarjeta${valor.id}">${valor.price}</span><span>€/kg</span>
                 <p class="card-text">${valor.content}</p>
                 <div class="cantidad">
                     <button class="btn" id="restar_cantidad_${valor.id}">-</button>
@@ -127,7 +127,7 @@ fetch('https://reqres.in/api/users/')
         }
         else
         {
-           // document.querySelector('#usuario_identificado').style.display='none';
+           document.querySelector('#usuario_identificado').style.display='none';
 
         }
             
@@ -135,7 +135,16 @@ fetch('https://reqres.in/api/users/')
     });
 
 
-  
+    const cerrar_sesion=document.querySelector('#cerrar_sesion');
+   
+    cerrar_sesion.addEventListener('click',()=>{
+
+       localStorage.clear();
+       window.reload();
+
+
+    });
+
 
 
     document.addEventListener('dragstart', (e) => {
@@ -253,7 +262,7 @@ fetch('https://reqres.in/api/users/')
             <div class="card" style="width: 15rem;">
                 <img src=${frutas[ultima].image} id="tarjeta${frutas[ultima].id}" class="card-img-top" draggable="true">
                 <div class="card-body">
-                    <span id="precio_tarjeta${frutas[ultima].id}">${frutas[ultima].price}</span><span>€/Kg</span>
+                    <span id="precio_tarjeta${frutas[ultima].id}">${frutas[ultima].price}</span><span>€/kg</span>
                     <p class="card-text">${frutas[ultima].content}</p>
                     <div class="cantidad">
                         <button class="btn" id="restar_cantidad_${frutas[ultima].id}">-</button>
