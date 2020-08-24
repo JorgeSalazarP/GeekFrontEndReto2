@@ -82,7 +82,7 @@
     }
 
     soltar_productos.innerHTML = `<i class="fa fa-shopping-cart m-3"></i><span id="titulo_carrito">Mi carrito</span>`;
-    pedido.innerHTML = `<p class="m-3">Total pedido:</p><span id="importe_pedido">0€</span><button class="btn">Tramitar pedido</button>`;
+    pedido.innerHTML = `<p class="m-3">Total pedido:</p><span id="importe_pedido">0€</span><button class="btn btn-lila">Tramitar pedido</button>`;
 
 
 
@@ -110,13 +110,32 @@ fetch('https://reqres.in/api/users/')
 
 
 
-    
+    const boton_formulario=document.querySelector('#boton_formulario');
 
+    boton_formulario.addEventListener('click',()=>{
+
+        let nombre_usuario=document.querySelector('#nombre_usuario').value;
+      
+        localStorage.setItem('nombre_usuario',nombre_usuario);
+        let obtener_nombre_usuario = localStorage.getItem('nombre_usuario');
+        console.log(obtener_nombre_usuario);
+
+        if(obtener_nombre_usuario !="" && obtener_nombre_usuario != "undefined")
+        {
+            document.querySelector('#mostrar_usuario').innerHTML="Bienvenid@ "+obtener_nombre_usuario;
+            document.querySelector('#usuario_identificado').style.display='block';
+        }
+        else
+        {
+           // document.querySelector('#usuario_identificado').style.display='none';
+
+        }
+            
+       
+    });
 
 
   
-
- 
 
 
     document.addEventListener('dragstart', (e) => {

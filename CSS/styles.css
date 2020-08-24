@@ -11,6 +11,14 @@ body{
     
    
 }
+
+
+#modal_usuario{
+
+    margin-left: 10px;
+    padding-top: 10px;
+
+}
 .fa{
 
     font-size: 50px;
@@ -172,7 +180,7 @@ h1{
     color:#d762e2;
     opacity: 0.9;
 }
-#total_pedido .btn{
+.btn-lila{
 
     background-color:#d762e2 ;
     color: #e8e3ce; 
@@ -183,9 +191,11 @@ h1{
 #importe_pedido{
 
     color: #b31f42;
-  
-    
+
+
 }
+
+
 #carrito{
   
     margin-left: 53px;
@@ -214,13 +224,12 @@ h1{
     text-align: center;
     width: 50px;
     height: 50px;
-    
+  
 
  }
 
 
-
- .equipo_usuarios {
+.equipo_usuarios {
 
     display:flex ;
     flex-direction: row;
@@ -236,6 +245,7 @@ h1{
     color:#d762e2;
     opacity: 0.9;
     padding: 10px;
+    
 }
 
 
@@ -252,6 +262,7 @@ h1{
 .apellido,
 .foto{
     margin-left: 10px;
+    cursor: pointer;
 }
 
 
@@ -259,7 +270,7 @@ h1{
 h2,
 #usuario_identificado{
 
-    display: block;
+    display: none;
     text-align: center;
     font-family: sans-serif;
     background-color:#d762e2;
