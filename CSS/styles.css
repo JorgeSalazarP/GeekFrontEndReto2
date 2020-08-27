@@ -386,4 +386,72 @@ small{
 
 
 
+@media(max-width:1142px){
 
+    .card{
+
+        width: 13rem !important;
+    }
+
+    .card img{
+
+        width: 70px;
+        
+    }
+    
+    .card-body{
+    
+        font-size: 12px;       
+    }
+
+    #carrito{
+        height: 507px;
+        margin-left: 20px;
+        
+      
+    }
+    
+  
+    
+    #carrito{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+   
+      
+    }
+
+    #titulo_carrito{
+
+
+      margin-bottom: 10px;
+    }
+    
+    #carrito article{
+
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    
+}
+
+@media(max-width:1089px){
+
+    .card{
+
+        width: 12rem !important;
+    }
+
+    .card img{
+
+        width: 60px;
+        
+    }
+    
+   
+
+}
