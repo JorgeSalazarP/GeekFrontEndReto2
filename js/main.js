@@ -2,11 +2,7 @@
 
 'use strict';
 
-/**************VARIABLES Y SELECCIONAMOS LOS ELEMENTOS*********************/
-    const contenido = document.querySelector('#tarjetas');
-    const soltar_productos = document.getElementById('carrito');
-    const pedido = document.getElementById('total_pedido');
-    const footer = document.getElementById('footer');
+/**************VARIABLES*********************/
 
     let img_seleccionada = "";
     let articulo = "";
@@ -60,9 +56,8 @@
 
 /******************** CREAMOS LOS ELEMENTOS**********************************/
 
-
 /*************CREAMOS LOS PRODUCTOS DE FORMA DINÁMICA ********************/
-
+const contenido = document.querySelector('#tarjetas');
     for (let valor of frutas) {
 
         contenido.innerHTML += `
@@ -87,6 +82,9 @@
 
     }
     /**************CREAMOS EL CARRITO Y EL TOTAL PEDIDO*************************************** */
+    const soltar_productos = document.getElementById('carrito');
+    const pedido = document.getElementById('total_pedido');
+
     soltar_productos.innerHTML = `<i class="fa fa-shopping-cart m-3"></i><span id="titulo_carrito">Mi carrito</span>`;
     pedido.innerHTML = `<p class="m-3">Total pedido:</p><span id="importe_pedido">0€</span><button class="btn btn-lila">Tramitar pedido</button>`;
 
