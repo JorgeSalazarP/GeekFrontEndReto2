@@ -13,7 +13,7 @@
     let cantidad_articulo = "";
     let precio_articulo = "";
     let total_compra = 0;
-
+    let mostrar_suma_pedido = 0;
     let elemento_seleccionado = "";
 
     let frutas = [
@@ -86,13 +86,13 @@
 		`;
 
     }
-
+    /**************CREAMOS EL CARRITO Y EL TOTAL PEDIDO*************************************** */
     soltar_productos.innerHTML = `<i class="fa fa-shopping-cart m-3"></i><span id="titulo_carrito">Mi carrito</span>`;
     pedido.innerHTML = `<p class="m-3">Total pedido:</p><span id="importe_pedido">0€</span><button class="btn btn-lila">Tramitar pedido</button>`;
 
 
 
-/******************CREAMOS NUESTRO EQUIPO, CONECTAMOS A UNA API UTILIZANDO PROMESAS*******/
+/******************CREAMOS SECCIÓN NUESTRO EQUIPO, CONECTAMOS A UNA API UTILIZANDO FETCH*******/
 let equipo_API=document.querySelector(".equipo_usuarios");
 
 fetch('https://reqres.in/api/users/')
@@ -131,7 +131,7 @@ fetch('https://reqres.in/api/users/')
         }
         else
         {
-           document.querySelector('#usuario_identificado').style.display='none';
+           document.querySelector('#usuario_identificado').style.display='none';//ocultamos si text del usuario está vacío.
 
         }
             
@@ -177,8 +177,8 @@ fetch('https://reqres.in/api/users/')
         const pulsado_boton_restar = elemento_pulsado.indexOf(nombre_idboton2);
 
         if (pulsado_boton_sumar !== -1) {
-
-            const ultima = elemento_pulsado[elemento_pulsado.length - 1];
+            
+            const ultima = Obtener_Ultima_Letra(elemento_pulsado);
             let numero_veces = parseInt(document.querySelector('#mostrar_cantidad_tarjeta' + ultima).textContent);
             numero_veces += 50;
             document.querySelector('#mostrar_cantidad_tarjeta' + ultima).innerHTML = numero_veces;
@@ -186,7 +186,7 @@ fetch('https://reqres.in/api/users/')
         }
         else if (pulsado_boton_restar !== -1) {
 
-            const ultima = elemento_pulsado[elemento_pulsado.length - 1];
+            const ultima = Obtener_Ultima_Letra(elemento_pulsado);
             let numero_veces = parseInt(document.querySelector('#mostrar_cantidad_tarjeta' + ultima).textContent);
             numero_veces === 100 ? numero_veces = 100 : numero_veces -= 50;//LA CANTIDAD MÍNIMA DE COMPRA SIEMPRE ES 100g.
             document.querySelector('#mostrar_cantidad_tarjeta' + ultima).innerHTML = numero_veces;
@@ -206,7 +206,7 @@ fetch('https://reqres.in/api/users/')
         e.preventDefault();
 
         /*************VAMOS CREANDO EL ELEMENTO EN EL CARRITO************* */
-        let ultima = elemento_seleccionado[elemento_seleccionado.length - 1];
+        const ultima = Obtener_Ultima_Letra(elemento_seleccionado);
         let articulo_seleccionado = document.createElement("article");
         articulo_seleccionado.classList.add("articulo_tarjeta" + ultima);
         soltar_productos.appendChild(articulo_seleccionado);
@@ -228,18 +228,9 @@ fetch('https://reqres.in/api/users/')
         /******************OPERACIÓN************************* */
         let total = document.createElement("span");
         let operacion = 0;
-        operacion = (parseFloat((cantidad_articulo.textContent) / 1000) * parseFloat(precio_articulo.textContent)).toFixed(2);
-        operacion = parseFloat(operacion);
-
-        total_compra += operacion;
-
-        let mostrar_suma_pedido = 0;
-        mostrar_suma_pedido = total_compra.toFixed(2); //SOLO DOS DECIMALES.
-
-        document.getElementById('importe_pedido').innerHTML = mostrar_suma_pedido + '€';
-
+        operacion=Cantidad_Precio(operacion);//Calculamos la cantidad* el precio
         total.innerHTML = operacion + '€';
-        articulo_seleccionado.appendChild(total);
+        articulo_seleccionado.appendChild(total)
 
         /**************************PAPELERA *************************/
         let icono_papelera = document.createElement("span");//CREAMOS EL BOTÓN DE LA PAPELERA
@@ -248,13 +239,12 @@ fetch('https://reqres.in/api/users/')
         contenido.removeChild(articulo);
 
 
-        /********CUANDO PULSAMOS LA PAPELERA TENEMOS QUE ELIMINAR EL ARTÍCULO 
-        DE*******************/
+        /********CUANDO PULSAMOS LA PAPELERA TENEMOS QUE ELIMINAR EL ARTÍCULO DEL CARRITO*******************/
         icono_papelera.addEventListener('click', (e) => {
 
             const elemento_pulsado = e.target.id;
 
-            let ultima = elemento_pulsado[elemento_pulsado.length - 1];
+            const ultima = Obtener_Ultima_Letra(elemento_pulsado);
             let devolver_producto = document.createElement("article");
             devolver_producto.classList.add("col-md-5");
             devolver_producto.classList.add("col-lg-4");
@@ -284,15 +274,8 @@ fetch('https://reqres.in/api/users/')
             contenido.appendChild(devolver_producto);/*********INCLUIMOS EL ELEMENTO CREADO EN LA SECCIÓN DE ARTÍCULOS */
             soltar_productos.removeChild(articulo_seleccionado);/**LO ELIMINAMOS DEL CARRITO */
 
-
             total_compra -= operacion;//AHORA LO TENEMOS QUE RESTAR A LA CANTIDAD TOTAL DE LA COMPRA
-            mostrar_suma_pedido = total_compra.toFixed(2);//SOLO DOS DECIMALES
-
-            if (mostrar_suma_pedido <= 0) { mostrar_suma_pedido = 0; } //PARA QUE NO MUESTRE NÚMEROS NEGATIVOS.
-
-            document.getElementById('importe_pedido').innerHTML = mostrar_suma_pedido + '€';
-
-
+            Total_Carrito();
 
         });
 
@@ -303,10 +286,34 @@ fetch('https://reqres.in/api/users/')
 
 
 
+    /**Función creada para obtener la última letra del id del elemento seleccionado */
+    const Obtener_Ultima_Letra = (boton_pulsado)=>{
+        boton_pulsado=boton_pulsado[boton_pulsado.length - 1];
 
+        return boton_pulsado;
+    }
 
+    /**Función que realiza el cálculo de los gramos y la cantidad */
+    const Cantidad_Precio =(calculo) =>{
+       
+        calculo = (parseFloat((cantidad_articulo.textContent) / 1000) * parseFloat(precio_articulo.textContent)).toFixed(2);
+        calculo = parseFloat(calculo);
+        total_compra += calculo;
+        Total_Carrito(); //Actualizamos el total del carrito
 
+        return calculo;
+    }
 
+    /**Función que muestra el total del pedido */
+    const Total_Carrito = ()=>{ 
+
+        mostrar_suma_pedido = total_compra.toFixed(2); //SOLO DOS DECIMALES Y MOSTRAMOS EN LA SUMA TOTAL DEL CARRITO
+
+        if (mostrar_suma_pedido <= 0) { mostrar_suma_pedido = 0; } //PARA QUE NO MUESTRE NÚMEROS NEGATIVOS.
+        document.getElementById('importe_pedido').innerHTML = mostrar_suma_pedido + '€';
+
+        
+    }
 
 
 })();
